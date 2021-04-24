@@ -5,7 +5,8 @@ print(f"Please think of a number between {low} and {high}")
 input("Please ENTER to start")
 
 guesses = 1
-while True:
+while low != high:
+    # print(f"\tGuessing in the range of {low} to {high}.")
     guess = low + (high - low) // 2
     high_low = input("My guess is {}. Should I guess higher or lower? Enter h or l,"
                      "or c if my guess was correct: "
@@ -25,3 +26,6 @@ while True:
 
     # guesses = guesses + 1
     guesses += 1
+else:
+    print(f"You thought of the number {low}")
+    print(f"I got it in {guesses}.")
