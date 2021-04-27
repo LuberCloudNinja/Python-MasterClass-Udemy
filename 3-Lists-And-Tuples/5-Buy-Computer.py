@@ -28,8 +28,8 @@ while current_choice != "0":
             computer_parts.append("Dvd drive".casefold())
     else:
         print("Please add from the list below: ")
-        for part in available_parts:
-            print("{0}: {1}".format(available_parts.index(part) + 1, part))
+        for number, part in enumerate(available_parts):
+            print(f"{number + 1}: {part}")
 
     current_choice = input("Please enter a value from the above list: ")
 print(f"You added the fallowing to the list {computer_parts}: ")
