@@ -19,8 +19,11 @@ def palindrome_sentence(sentence):
     return is_palindrome(string)
 
 
-word = input("Please enter a word to check: ")
-if palindrome_sentence(word):
-    print(f"'{word}' is a palindrome")
-else:
-    print(f"'{word}' is not a palindrome")
+# word = input("Please enter a word to check: ")
+# if palindrome_sentence(word):
+#     print(f"'{word}' is a palindrome")
+# else:
+#     print(f"'{word}' is not a palindrome")
+
+answer = multiply(18, 3)
+print(answer)
