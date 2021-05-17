@@ -1,4 +1,10 @@
 def multiply(x, y):
+    """
+
+    :param x: Integer value
+    :param y: Integer value
+    :return: Returns to user the multiplication of x & y values.
+    """
     result = x * y
     return result
 
