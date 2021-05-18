@@ -1,0 +1,48 @@
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Sid":"PublicRead",
+      "Effect":"Allow",
+      "Principal": "*",
+      "Action":["s3:GetObject","s3:GetObjectVersion"],
+      "Resource":["arn:aws:s3:::testing-ssl-luber/*"]
+    }
+  ]
+}
+Lambda Name:
+
+AWS-Config-Auto-Remediation-S3-SSE-SSL
+
+import json
+import boto3
+
+def lambda_handler(event, context):
+    s3_buckets = boto3.client("s3")
+    all_buckets = []
+
+    for buckets in s3_buckets.list_buckets()['Buckets']:
+        all_buckets.append(buckets['Name'])
+
+    for items in all_buckets:
+        response = s3_buckets.put_bucket_encryption(
+    Bucket=items,
+        ServerSideEncryptionConfiguration={
+        'Rules': [
+            {
+                'ApplyServerSideEncryptionByDefault': {
+                    'SSEAlgorithm': 'AES256'
+                },
+                'BucketKeyEnabled': False
+            },
+        ]
+    },)
+
+AWS Config rule:
+s3-bucket-server-side-encryption-enabled
+AWS-Config-Auto-Remediation-S3-SSE
+
+s3-bucket-ssl-requests-only
+
+
+see-luber-test
